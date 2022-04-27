@@ -45,25 +45,25 @@ def main(win,iters):
         
         try:
             driver.get('#')
-            element_present = EC.presence_of_element_located((By.XPATH, '(//li[div/div/div[text()="A"]]/div[5]/select)[1]'))
+            element_present = EC.presence_of_element_located((By.XPATH, 'Copy element containing event listener here'))
             WebDriverWait(driver, 10).until(element_present)
-            Select(driver.find_element_by_xpath('(//li[div/div/div[text()="A"]]/div[5]/select)[1]')).select_by_index(1)
+            Select(driver.find_element_by_xpath('copy element containing event listener here')).select_by_index(1)
         except Exception as e:
-            print('[+] A ticket not found')
+            print('Failed to find listener')
             continue
         
         try:
-            driver.execute_script("arguments[0].click();", driver.find_element_by_id('checkoutbnt'))
+            driver.execute_script("arguments[0].click();", driver.find_element_by_id('eventlistener name'))
             time.sleep(5)
         except:
-            print('[+] Couldn\'t click on Checkout btn')
+            print('Automation failed')
         
             
 
 
 
 
-target_url=input('[+] Enter the test URL:') or "https://www.seetickets.us/event/WAF108upselltest2/457360"
+target_url=input('[+] Enter the test URL:') or "DEFAULT URL HERE"
 instances=int(input('[+] How Many Windows in Parallel:') or "4")
 iters=int(input('[+] How Many Iteration per Window:') or "10")
 #Open Chrome Once and Quit
